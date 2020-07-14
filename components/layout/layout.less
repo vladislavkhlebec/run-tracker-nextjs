@@ -1,0 +1,49 @@
+@import '../index.less';
+
+.layout {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+}
+
+.layout_header {
+	flex: 0 0 8rem;
+
+	@media @phone {
+		flex: 0 0 5rem;
+	}
+}
+
+.layout_content {
+	display: flex;
+	flex-direction: column;
+	flex: auto;
+	overflow: auto;
+	overflow-x: hidden;
+}
+
+.layout_section {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	padding: 3rem 5rem;
+	max-width: 100rem;
+	margin: 0 auto;
+	width: 100%;
+
+	@media @phone {
+		padding: 3rem 1rem;
+	}
+}
+.layout_contentContainer {
+	flex: 1 0 auto;
+}
+
+.layout_footer {
+	flex: 0 0 auto;
+	margin-top: 8rem;
+
+	@media @phone {
+		margin-top: 3rem;
+	}
+}
