@@ -1,0 +1,264 @@
+@import '../index.less';
+
+.siteNavbar {
+	box-shadow: 0 0 10px rgba(36, 58, 33, 0.15);
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+    background: var(--clr-appleGreen);
+
+	@media @phone {
+		flex-direction: column-reverse;
+	}
+}
+
+.siteNavbar_line1 {
+	background-color: var(--clr-grayNurse);
+	height: 35%;
+	transition: var(--menu-speed);
+
+	@media @phone {
+		height: auto;
+		display: none;
+		background: var(--clr-callToAction);
+	}
+}
+
+.siteNavbar_line2 {
+	height: 75%;
+	display: flex;
+	align-items: center;
+	width: 100%;
+
+	@media @phone {
+		height: auto;
+	}
+}
+
+.siteNavbar_content {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	padding: 0 4rem;
+	height: 100%;
+	justify-content: space-between;
+
+	@media @phone {
+		display: flex;
+		flex-direction: column;
+		padding: 0 1rem;
+		justify-content: end;
+	}
+}
+
+.siteNavbar_contentTitle {
+	@media @phone {
+		width: 100%;
+		color: #ffff;
+		font-size: 1.1rem;
+		margin-bottom: .75rem;
+	}
+}
+
+.siteNavbar_contentMenu {
+	@media @phone {
+		display: none;
+		margin-top: 1rem;
+	}
+}
+
+.siteNavbar_logo {
+	@media @phone {
+		display: none;
+	}
+}
+
+// Humburger menu
+.siteNavbar_contentHeader {
+	@media @phone {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		padding: 0.5rem 0 0 0;
+	}
+}
+
+.hamburger_container {
+	display: none;
+
+	@media @phone {
+		display: flex;
+	}
+}
+
+.hamburger {
+	position: absolute;
+	top: 1.25rem;
+	right: .75rem;
+	z-index: 10;
+	width: 3rem;
+	height: 3rem;
+	padding: 1rem;
+	background: var(--primary-color);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	display: none;
+	z-index: 15;
+
+	@media @phone {
+		display: flex;
+	}
+}
+
+.hamburger > div {
+	position: relative;
+	flex: none;
+	width: 100%;
+	height: 0.2rem;
+	background: var(--clr-white);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.4s ease;
+	z-index: 10;
+}
+
+.hamburger > div::before,
+.hamburger > div::after {
+	z-index: 10;
+	content: '';
+	position: absolute;
+	z-index: 1;
+	top: -0.75rem;
+	width: 100%;
+	height: 0.2rem;
+	background: inherit;
+}
+
+.hamburger > div::after {
+	top: 0.75rem;
+}
+
+.hamburger > span {
+	margin-top: 0.75rem;
+	color: var(--clr-white);
+	font-size: 1rem;
+}
+
+.hamburger_toggler {
+	position: absolute;
+	top: 1rem;
+	right: 1.5rem;
+	z-index: 100;
+	cursor: pointer;
+	width: 3.25rem;
+	height: 3.25rem;
+	opacity: 0;
+}
+
+.hamburger_toggler:checked + .hamburger > div {
+	transform: rotate(135deg);
+}
+
+.hamburger_toggler:checked + .hamburger > span {
+	opacity: 0;
+}
+
+.hamburger_toggler:checked + .hamburger > div:before,
+.hamburger_toggler:checked + .hamburger > div:after {
+	top: 0;
+	transform: rotate(90deg);
+	background: #ffffff;
+	width: 100%;
+}
+
+.hamburger_toggler:checked + .hamburger > div:after {
+	top: 0;
+	transform: rotate(180deg);
+	background: #ffffff;
+}
+
+.hamburger_toggler:checked:hover + .hamburger > div:after {
+	transform: rotate(180deg);
+	background: #ffffff;
+}
+
+.menu {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	position: relative;
+	z-index: 10;
+    justify-content: center;
+
+	@media @phone {
+		transform: translate(-100%, 0);
+		flex-direction: column-reverse;
+		background: var(--clr-callToAction);
+		transition: 0.5s;
+		padding-top: 5rem;
+	}
+}
+
+.menu_logo__mobile {
+	display: none;
+
+	@media @phone {
+		display: flex;
+		position: absolute;
+		left: 1rem;
+		top: 1rem;
+	}
+
+	&__white {
+		display: none;
+	}
+}
+
+.hamburger_toggler:checked ~ .menu {
+	justify-content: flex-end;
+	min-height: 100vh;
+	transform: translate(0, 0);
+}
+
+.hamburger_toggler:checked ~ .menu .siteNavbar_line1 {
+	display: flex;
+	flex: 0 0 auto;
+}
+
+.hamburger_toggler:checked ~ .menu .siteNavbar_line2 {
+	flex: 1 0 auto;
+}
+
+.hamburger_toggler:checked ~ .menu .siteNavbar_contentMenu {
+	display: flex;
+}
+
+.hamburger_toggler:checked ~ .menu_logo__mobile {
+	display: block;
+	z-index: 400;
+}
+
+.mobile_navbarHolder {
+	display: none;
+
+	@media @phone {
+		display: block;
+		height: 4rem;
+		position: absolute;
+		background: var(--clr-callToAction);
+		height: 5.5rem;
+		width:100%;
+		z-index: 4;
+		top: 0;
+		transition: 1s;
+		transform: translate(-100%, 0);
+	}
+}
+
+.hamburger_toggler:checked ~ .mobile_navbarHolder {
+	transform: translate(0, 0);
+}

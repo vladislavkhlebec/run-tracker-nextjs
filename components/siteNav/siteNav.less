@@ -1,0 +1,44 @@
+@import '../index.less';
+
+.siteNav {
+	display: flex;
+	margin: 0 -2rem;
+    list-style: none;
+
+	@media @phone {
+		width: 100vw;
+		flex-direction: column;
+		margin-bottom: 2rem;
+	}
+}
+
+.siteNav_item {
+	padding: 0.5rem 2rem;
+	white-space: nowrap;
+	position: relative;
+
+
+	@media @phone {
+		font-size: 1.1rem;
+		padding: 0.5rem 1.25rem;
+		color: #ffffff;
+		margin-bottom: .75rem;
+	}
+}
+
+.siteNav_item a {
+    color: var(--clr-white);
+    font-weight: bold;
+
+	@media @phone {
+		color: #ffffff;
+		font-size: 1rem;
+	}
+}
+
+.siteNav_item .text {
+	@media @phone {
+		color: #ffffff;
+		font-size: 1.1rem;
+	}
+}
