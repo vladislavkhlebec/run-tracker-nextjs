@@ -9,7 +9,7 @@ export const login = () => {
 		auth.login().then(
 			user => {
 				dispatch(success(user))
-				// redirect('/dashboard')
+				redirect('/jogs')
 			},
 			error => {
 				dispatch(failure(error.toString()))

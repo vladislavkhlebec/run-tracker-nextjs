@@ -4,4 +4,5 @@ import { userReducer } from './users/user.reducer'
 
 export const rootReducer = combineReducers({
 	jogs: jogsReducer,
+	user: userReducer,
 })

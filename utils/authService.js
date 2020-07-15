@@ -14,28 +14,13 @@ export default class AuthService {
 		try {
 			const responseToken = await axios.post('/v1/auth/uuidLogin', { uuid: 'hello' })
 			this.setToken(responseToken.data.response)
+			const userResponse = await axios.get('/v1/auth/user')
+			return userResponse.data.response
 		} catch (e) {
 			console.log(e)
 		}
 
 		return
-		// return axios.post('/v1/auth/uuidLogin', {
-		// 	method: 'POST',
-		// 	body: JSON.stringify({
-		// 		email,
-		// 		password,
-		// 	}),
-		// })
-		// 	.then(res => {
-		//
-		// 		return this.fetch(`${this.domain}/api/user`, {
-		// 			method: 'GET',
-		// 		})
-		// 	})
-		// 	.then(res => {
-		// 		this.setProfile(res)
-		// 		return Promise.resolve(res)
-		// 	})
 	}
 
 	loggedIn() {
@@ -63,14 +48,14 @@ export default class AuthService {
 
 	getToken() {
 		// Retrieves the user token from localStorage
-		return localStorage.getItem('id_token')
+		return localStorage.getItem('access_token')
 	}
 
-	logout() {
-		// Clear user token and profile data from localStorage
-		localStorage.removeItem('id_token')
-		localStorage.removeItem('profile')
-	}
+	// logout() {
+	// 	// Clear user token and profile data from localStorage
+	// 	localStorage.removeItem('id_token')
+	// 	localStorage.removeItem('profile')
+	// }
 
 	_checkStatus(response) {
 		// raises an error in case response status is not a success

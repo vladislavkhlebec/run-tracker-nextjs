@@ -29,8 +29,7 @@ export default function withAuth(AuthComponent) {
 		}
 
 		componentDidMount() {
-			console.log('adas', !Auth.loggedIn())
-			if (Auth.loggedIn()) {
+			if (!Auth.loggedIn()) {
 				redirect('/')
 			}
 			this.setState({ isLoading: false })

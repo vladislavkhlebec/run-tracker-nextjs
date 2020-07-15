@@ -6,15 +6,15 @@ import { Button } from '../components/button/button'
 import { login } from '../store/users/actions'
 
 const Home = props => {
-	const { login } = props
+	const { userLogin } = props
 	return (
 		<Layout isSignIn={true}>
 			<div className='signIn_formContainer'>
 				<img src='/images/icons/bear-face.svg' alt='Sign in logo' />
 				<Button
 					className='button__white'
-					onClick={async () => {
-						await login()
+					onClick={() => {
+						userLogin()
 					}}
 				>
 					Let me in
@@ -25,7 +25,7 @@ const Home = props => {
 }
 
 const mapDispatchToProps = {
-	login: login,
+	userLogin: login,
 }
 
 export default connect(null, mapDispatchToProps)(Home)

@@ -4,7 +4,7 @@ const initialState = {
 	user: {},
 }
 
-export const jogsReducer = (state = initialState, action) => {
+export const userReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case LOGIN: {
 			return {
