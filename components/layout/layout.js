@@ -48,7 +48,7 @@ export const Layout_section = props => {
  *  @return {any}
  */
 export const Layout = props => {
-	const { children } = props
+	const { children, isSignIn } = props
 	return (
 		<>
 			<Head>
@@ -60,7 +60,7 @@ export const Layout = props => {
 			</Head>
 			<div className='layout'>
 				<LayoutHeader>
-					<SiteNavbar />
+					<SiteNavbar isSignIn={isSignIn} />
 				</LayoutHeader>
 				<LayoutContent>{children}</LayoutContent>
 			</div>
