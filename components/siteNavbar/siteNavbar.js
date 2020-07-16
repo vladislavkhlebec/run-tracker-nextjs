@@ -52,13 +52,13 @@ export function SiteNavbar(props) {
 							<div className='siteNavbar_contentMenu'>
 								<SiteNav className='mg_b_4x'>
 									<SiteNav_item>
-										<a href='about'>JOGS</a>
+										<a href='/jogs'>JOGS</a>
 									</SiteNav_item>
 									<SiteNav_item>
-										<a href='news'>INFO</a>
+										<a href='/info'>INFO</a>
 									</SiteNav_item>
 									<SiteNav_item>
-										<a href='contacts'>CONTACT US</a>
+										<a href='/contact-us'>CONTACT US</a>
 									</SiteNav_item>
 									<SiteNav_item>
 										<a href='account'>filters</a>

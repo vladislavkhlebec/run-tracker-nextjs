@@ -3,7 +3,6 @@ import axios from 'axios'
 export default class AuthService {
 	constructor(domain) {
 		this.domain = domain || 'http://localhost'
-		this.fetch = this.fetch.bind(this)
 		this.login = this.login.bind(this)
 		this.getProfile = this.getProfile.bind(this)
 	}
@@ -51,11 +50,10 @@ export default class AuthService {
 		return localStorage.getItem('access_token')
 	}
 
-	// logout() {
-	// 	// Clear user token and profile data from localStorage
-	// 	localStorage.removeItem('id_token')
-	// 	localStorage.removeItem('profile')
-	// }
+	logout() {
+		// Clear user token and profile data from localStorage
+		localStorage.removeItem('access_token')
+	}
 
 	_checkStatus(response) {
 		// raises an error in case response status is not a success
@@ -66,24 +64,5 @@ export default class AuthService {
 			error.response = response
 			throw error
 		}
-	}
-
-	fetch(url, options) {
-		// performs api calls sending the required authentication headers
-		const headers = {
-			Accept: 'application/json',
-			'Content-Type': 'application/json',
-		}
-
-		if (this.loggedIn()) {
-			headers['Authorization'] = 'Bearer ' + this.getToken()
-		}
-
-		return fetch(url, {
-			headers,
-			...options,
-		})
-			.then(this._checkStatus)
-			.then(response => response.json())
 	}
 }

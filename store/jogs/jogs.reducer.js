@@ -1,7 +1,7 @@
-import { CREATE_JOG } from './actionTypes'
+import { CREATE_JOG, SET_ALL_JOGS } from './actionTypes'
 
 const initialState = {
-	jogs: [],
+	items: [],
 }
 
 export const jogsReducer = (state = initialState, action) => {
@@ -9,7 +9,13 @@ export const jogsReducer = (state = initialState, action) => {
 		case CREATE_JOG: {
 			return {
 				...state,
-				posts: [...state.jogs, action.payload],
+				items: [...state.items, action.payload],
+			}
+		}
+		case SET_ALL_JOGS: {
+			return {
+				...state,
+				items: action.jogs,
 			}
 		}
 		default: {
