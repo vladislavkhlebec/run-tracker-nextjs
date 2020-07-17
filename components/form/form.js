@@ -56,7 +56,7 @@ const Form = ({ initialState, onSubmit }) => {
 						onChange={date => {
 							setFormState({
 								...formState,
-								date: date.getTime(),
+								date,
 							})
 						}}
 					/>

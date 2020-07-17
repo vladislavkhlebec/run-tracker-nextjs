@@ -24,7 +24,7 @@ const Create = ({ _createJog, _fetchJogs }) => {
 					initialState={{
 						distance: '',
 						time: '',
-						date: new Date().getTime(),
+						date: new Date(),
 					}}
 					onSubmit={formState => {
 						_createJog(formState)
