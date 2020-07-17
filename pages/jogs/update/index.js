@@ -9,8 +9,9 @@ import '../../../styles/main.less'
 import 'react-datepicker/dist/react-datepicker.css'
 import redirect from '../../../utils/redirect'
 import Form from '../../../components/form/form'
+import { createJog, updateJog } from '../../../store/jogs/actions'
 
-const Update = ({ jogs }) => {
+const Update = ({ jogs, _updateJog }) => {
 	const router = useRouter()
 	const { id } = router.query
 
@@ -25,13 +26,13 @@ const Update = ({ jogs }) => {
 	console.log(id)
 	console.log(jog)
 
-	const [formState, setFormState] = useState({
-		id: jog?.id,
-		user_id: jog?.user_id,
-		distance: jog?.distance,
-		time: jog?.time,
-		date: jog?.date,
-	})
+	// const [formState, setFormState] = useState({
+	// 	id: jog?.id,
+	// 	user_id: jog?.user_id,
+	// 	distance: jog?.distance,
+	// 	time: jog?.time,
+	// 	date: jog?.date,
+	// })
 
 	return (
 		<Layout>
@@ -51,8 +52,8 @@ const Update = ({ jogs }) => {
 							time: jog.time,
 							date: jog.date,
 						}}
-						onSubmit={() => {
-							console.log('update')
+						onSubmit={data => {
+							_updateJog(data)
 						}}
 						onClose={() => {
 							redirect('/jogs')
@@ -73,4 +74,8 @@ const mapStateToProps = state => {
 	}
 }
 
-export default withAuth(connect(mapStateToProps, null)(Update))
+const mapDispatchToProps = {
+	_updateJog: updateJog,
+}
+
+export default withAuth(connect(mapStateToProps, mapDispatchToProps)(Update))

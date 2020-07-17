@@ -1,5 +1,5 @@
 import { CREATE_JOG, FAILURE, SET_ALL_JOGS, SET_JOG_LOADING } from './actionTypes'
-import { getAllJogs, postCreateJog } from '../../libs/crud/jogs.crud'
+import { getAllJogs, postCreateJog, putUpdateJog } from '../../libs/crud/jogs.crud'
 import redirect from '../../utils/redirect'
 import { LOGIN } from '../users/actionsTypes'
 
@@ -19,13 +19,13 @@ export const createJog = jog => {
 		)
 	}
 
-	const success = jog => {
+	function success(jog) {
 		return { type: CREATE_JOG, jog }
 	}
-	const failure = error => {
+	function failure(error) {
 		return { type: FAILURE, error }
 	}
-	const isLoading = boolean => {
+	function isLoading(boolean) {
 		return { type: SET_JOG_LOADING, payload: boolean }
 	}
 }
@@ -46,16 +46,45 @@ export const fetchJogs = () => {
 			}
 		)
 	}
-	const success = jogs => {
+	function success(jogs) {
 		return { type: SET_ALL_JOGS, jogs }
 	}
-	const setUser = user => {
+	function setUser(user) {
 		return { type: LOGIN, user }
 	}
-	const failure = error => {
+	function failure(error) {
 		return { type: FAILURE, error }
 	}
-	const isLoading = boolean => {
+	function isLoading(boolean) {
+		return { type: SET_JOG_LOADING, payload: boolean }
+	}
+}
+
+export const updateJog = jog => {
+	return dispatch => {
+		dispatch(isLoading(true))
+
+		putUpdateJog(jog).then(
+			response => {
+				console.log(response)
+				dispatch(isLoading(false))
+				redirect('/jogs')
+			},
+			error => {
+				console.log(error.response)
+				dispatch(failure(error.toString()))
+				redirect('/')
+			}
+		)
+	}
+
+	function success(jog) {
+		return { type: CREATE_JOG, jog }
+	}
+	function failure(error) {
+		return { type: FAILURE, error }
+	}
+	function isLoading(boolean) {
 		return { type: SET_JOG_LOADING, payload: boolean }
 	}
 }

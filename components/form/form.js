@@ -3,19 +3,30 @@ import DatePicker from 'react-datepicker'
 import Link from 'next/link'
 
 const Form = ({ initialState, onSubmit }) => {
-	const { distance, time, date } = initialState
+	const { distance, time, date, id, user_id } = initialState
 
 	const [formState, setFormState] = useState({
 		distance,
 		time,
-		date,
+		date: new Date(date),
 	})
+
+	const getUpdateObject = () => {
+		if (id && user_id) {
+			return {
+				...formState,
+				jog_id: id,
+				user_id: +user_id,
+			}
+		}
+		return formState
+	}
 
 	return (
 		<form
 			onSubmit={e => {
 				e.preventDefault()
-				onSubmit(formState)
+				onSubmit(getUpdateObject())
 			}}
 		>
 			<label>

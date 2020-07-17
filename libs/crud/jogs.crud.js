@@ -7,3 +7,7 @@ export const getAllJogs = () => {
 export const postCreateJog = jog => {
 	return axios.post('/v1/data/jog', jog)
 }
+
+export const putUpdateJog = jog => {
+	return axios.put('/v1/data/jog', jog)
+}
