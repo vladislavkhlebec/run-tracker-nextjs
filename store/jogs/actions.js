@@ -66,12 +66,10 @@ export const updateJog = jog => {
 
 		putUpdateJog(jog).then(
 			response => {
-				console.log(response)
 				dispatch(isLoading(false))
 				redirect('/jogs')
 			},
 			error => {
-				console.log(error.response)
 				dispatch(failure(error.toString()))
 				redirect('/')
 			}
