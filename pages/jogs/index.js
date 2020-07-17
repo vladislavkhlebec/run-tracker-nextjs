@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import Link from 'next/link'
 import withAuth from '../../utils/withAuth'
 import { Layout, Layout_section } from '../../components/layout'
 import { connect } from 'react-redux'
@@ -15,32 +16,42 @@ const Index = ({ syncJogs, jogs = [] }) => {
 	return (
 		<Layout>
 			<Layout_section>
+				<Link href='/jogs/create'>
+					<a className='addJog'>
+						<img src='/images/icons/add.svg' alt='Add jog' />
+					</a>
+				</Link>
 				<div className='jogs_container'>
 					{jogs.length ? (
-						jogs.map((item, i) => {
-							return (
-								<div className='jog_container' key={`jogs_${i}`}>
-									<div className='jog_logoContainer'>
-										<img src='/images/icons/runner.svg' alt='Runner' />
-									</div>
-									<div className='jog_contentContainer'>
-										<span className='lightText'>{getFormattedDate(item.date)}</span>
-										<span>
-											Speed:
-											<small>speed</small>
-										</span>
-										<span>
-											Distance:
-											<small>{item.distance} km</small>
-										</span>
-										<span>
-											Time:
-											<small>{item.time} min</small>
-										</span>
-									</div>
-								</div>
-							)
-						})
+						jogs
+							.slice()
+							.reverse()
+							.map((item, i) => {
+								return (
+									<Link href={`/jogs/update?id=${item.id}`} key={`jogs_${i}`}>
+										<a className='jog_container'>
+											<div className='jog_logoContainer'>
+												<img src='/images/icons/runner.svg' alt='Runner' />
+											</div>
+											<div className='jog_contentContainer'>
+												<span className='lightText'>{getFormattedDate(item.date)}</span>
+												<span>
+													Speed:
+													<small>{item.speed}</small>
+												</span>
+												<span>
+													Distance:
+													<small>{item.distance} km</small>
+												</span>
+												<span>
+													Time:
+													<small>{item.time} min</small>
+												</span>
+											</div>
+										</a>
+									</Link>
+								)
+							})
 					) : (
 						<div className='action_container action_container__transparent'>
 							<img src='/images/icons/sad-rounded-square-emoticon.svg' alt='Logo' />

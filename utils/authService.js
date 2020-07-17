@@ -14,6 +14,7 @@ export default class AuthService {
 			const responseToken = await axios.post('/v1/auth/uuidLogin', { uuid: 'hello' })
 			this.setToken(responseToken.data.response)
 			const userResponse = await axios.get('/v1/auth/user')
+			this.setProfile(userResponse.data.response)
 			return userResponse.data.response
 		} catch (e) {
 			console.log(e)
@@ -25,6 +26,7 @@ export default class AuthService {
 	loggedIn() {
 		// Checks if there is a saved token and it's still valid
 		const token = this.getToken()
+		const profile = this.getProfile()
 		// return !!token && !isTokenExpired(token) // handwaiving here
 		return !!token // handwaiving here
 	}

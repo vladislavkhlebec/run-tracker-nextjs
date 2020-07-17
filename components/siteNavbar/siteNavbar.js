@@ -8,6 +8,7 @@ import React, { useState } from 'react'
 
 import './siteNavbar.less'
 import { SiteNav, SiteNav_item } from '../siteNav'
+import Link from 'next/link'
 
 /** SiteNavbar
  *  @param props
@@ -26,14 +27,18 @@ export function SiteNavbar(props) {
 						<span>Меню</span>
 					</div>
 					<div className='menu_logo__mobile'>
-						<a href='/'>
-							<img src='/images/logo.svg' />
-						</a>
+						<Link href='/'>
+							<a>
+								<img src='/images/logo.svg' />
+							</a>
+						</Link>
 					</div>
 					<div className='menu_logo__mobile menu_logo__mobile__white'>
-						<a href='/'>
-							<img src='/images/logo_white.svg' />
-						</a>
+						<Link href='/'>
+							<a href='/'>
+								<img src='/images/logo_white.svg' />
+							</a>
+						</Link>
 					</div>
 				</>
 			)}
@@ -43,25 +48,35 @@ export function SiteNavbar(props) {
 					<div className='siteNavbar_content'>
 						<div className='siteNavbar_contentHeader'>
 							<div className='siteNavbar_logo'>
-								<a href='/'>
-									<img src='/images/logo.svg' />
-								</a>
+								<Link href='/'>
+									<a>
+										<img src='/images/logo.svg' />
+									</a>
+								</Link>
 							</div>
 						</div>
 						{!isSignIn && (
 							<div className='siteNavbar_contentMenu'>
 								<SiteNav className='mg_b_4x'>
 									<SiteNav_item>
-										<a href='/jogs'>JOGS</a>
+										<Link href='/jogs'>
+											<a>JOGS</a>
+										</Link>
 									</SiteNav_item>
 									<SiteNav_item>
-										<a href='/info'>INFO</a>
+										<Link href='/info'>
+											<a>INFO</a>
+										</Link>
 									</SiteNav_item>
 									<SiteNav_item>
-										<a href='/contact-us'>CONTACT US</a>
+										<Link href='/contact-us'>
+											<a>CONTACT US</a>
+										</Link>
 									</SiteNav_item>
 									<SiteNav_item>
-										<a href='account'>filters</a>
+										<Link href='/account'>
+											<a>filters</a>
+										</Link>
 									</SiteNav_item>
 								</SiteNav>
 							</div>

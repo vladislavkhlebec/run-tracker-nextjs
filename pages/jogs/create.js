@@ -1,8 +1,42 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Layout } from '../../components/layout'
+import DatePicker from 'react-datepicker'
 
-const Create = () => {
-	return <Layout></Layout>
+import '../../styles/main.less'
+import 'react-datepicker/dist/react-datepicker.css'
+import { connect } from 'react-redux'
+import withAuth from '../../utils/withAuth'
+import { createJog, fetchJogs } from '../../store/jogs/actions'
+import Form from '../../components/form/form'
+import redirect from '../../utils/redirect'
+
+const Create = ({ _createJog, _fetchJogs }) => {
+	return (
+		<Layout>
+			<div className='action_container action_container__green'>
+				<button
+					className='closeButton'
+					onClick={() => {
+						redirect('/jogs')
+					}}
+				/>
+				<Form
+					initialState={{
+						distance: '',
+						time: '',
+						date: new Date().getTime(),
+					}}
+					onSubmit={formState => {
+						_createJog(formState)
+					}}
+				/>
+			</div>
+		</Layout>
+	)
 }
 
-export default Create
+const mapDispatchToProps = {
+	_createJog: createJog,
+}
+
+export default withAuth(connect(null, mapDispatchToProps)(Create))
