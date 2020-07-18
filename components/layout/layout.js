@@ -9,6 +9,11 @@ import React from 'react'
 import './layout.less'
 import Head from 'next/head'
 import { SiteNavbar } from '../siteNavbar'
+import { fetchJogs } from '../../store/jogs/actions'
+import { setEndDate, setStartDate } from '../../store/filters/actions'
+import withAuth from '../../utils/withAuth'
+import { connect } from 'react-redux'
+import DatePicker from 'react-datepicker'
 
 /** LayoutHeader
  *  @param props
@@ -47,8 +52,8 @@ export const Layout_section = props => {
  *  @param props.contentHeight
  *  @return {any}
  */
-export const Layout = props => {
-	const { children, isSignIn } = props
+const Layout = props => {
+	const { children, isSignIn, _setEndDate, _setStartDate, endDate, startDate, useFilter } = props
 	return (
 		<>
 			<Head>
@@ -61,9 +66,51 @@ export const Layout = props => {
 			<div className='layout'>
 				<LayoutHeader>
 					<SiteNavbar isSignIn={isSignIn} />
+					{useFilter && (
+						<div className='filtersMenu_container'>
+							<div className='filtersMenu_pickerContainer'>
+								<span>Date from</span>
+								<div className='filtersMenu_pickerWrapper'>
+									<DatePicker
+										selected={startDate}
+										onChange={date => {
+											_setStartDate(date)
+										}}
+									/>
+								</div>
+							</div>
+							<div className='filtersMenu_pickerContainer'>
+								<span>Date to</span>
+								<div className='filtersMenu_pickerWrapper'>
+									<DatePicker
+										selected={endDate}
+										onChange={date => {
+											_setEndDate(date)
+										}}
+									/>
+								</div>
+							</div>
+						</div>
+					)}
 				</LayoutHeader>
+
 				<LayoutContent>{children}</LayoutContent>
 			</div>
 		</>
 	)
 }
+
+const mapStateToProps = state => {
+	const { endDate, startDate } = state.filters
+	return {
+		endDate,
+		startDate,
+	}
+}
+
+const mapDispatchToProps = {
+	_setEndDate: setEndDate,
+	_setStartDate: setStartDate,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Layout)

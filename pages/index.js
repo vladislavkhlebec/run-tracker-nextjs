@@ -1,4 +1,4 @@
-import { Layout, Layout_section } from '../components/layout'
+import Layout, { Layout_section } from '../components/layout/layout'
 import { connect } from 'react-redux'
 
 import '../styles/signin.less'

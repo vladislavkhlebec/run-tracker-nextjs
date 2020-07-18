@@ -1,20 +1,21 @@
 import React, { useEffect } from 'react'
 import Link from 'next/link'
 import withAuth from '../../utils/withAuth'
-import { Layout, Layout_section } from '../../components/layout'
+import Layout, { Layout_section } from '../../components/layout/layout'
 import { connect } from 'react-redux'
 import { fetchJogs } from '../../store/jogs/actions'
-
-import '../../styles/jogs-page.less'
 import { getFormattedDate } from '../../libs/date'
 import { Button } from '../../components/button'
+import '../../styles/jogs-page.less'
+import 'react-datepicker/dist/react-datepicker.css'
+import { getFilteredJogs } from '../../store/filters/functions'
 
 const Index = ({ syncJogs, jogs = [] }) => {
 	useEffect(() => {
 		syncJogs()
 	}, [])
 	return (
-		<Layout>
+		<Layout useFilter={true}>
 			<Layout_section>
 				<Link href='/jogs/create'>
 					<a className='addJog'>
@@ -66,9 +67,8 @@ const Index = ({ syncJogs, jogs = [] }) => {
 }
 
 const mapStateToProps = state => {
-	const jogs = state.jogs.items
 	return {
-		jogs,
+		jogs: getFilteredJogs(state),
 	}
 }
 

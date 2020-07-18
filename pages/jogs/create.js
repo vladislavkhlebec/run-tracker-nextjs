@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Layout } from '../../components/layout'
+import Layout, { Layout_section } from '../../components/layout/layout'
 import DatePicker from 'react-datepicker'
 
 import '../../styles/main.less'

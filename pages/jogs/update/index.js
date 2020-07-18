@@ -6,7 +6,6 @@ import { connect } from 'react-redux'
 import { useRouter } from 'next/router'
 
 import '../../../styles/main.less'
-import 'react-datepicker/dist/react-datepicker.css'
 import redirect from '../../../utils/redirect'
 import Form from '../../../components/form/form'
 import { createJog, updateJog } from '../../../store/jogs/actions'
@@ -22,9 +21,6 @@ const Update = ({ jogs, _updateJog }) => {
 			redirect('/jogs')
 		}
 	}, [])
-
-	console.log(id)
-	console.log(jog)
 
 	// const [formState, setFormState] = useState({
 	// 	id: jog?.id,

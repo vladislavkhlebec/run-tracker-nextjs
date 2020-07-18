@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import withAuth from '../utils/withAuth'
-import { Layout, Layout_section } from '../components/layout'
+import Layout, { Layout_section } from '../components/layout/layout'
 
 import '../styles/main.less'
 
