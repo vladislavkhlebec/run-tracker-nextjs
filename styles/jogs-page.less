@@ -18,12 +18,22 @@
 	&:hover {
 		background: var(--clr-lightGray);
 	}
+
+	@media @phone {
+		max-width: none;
+		border-bottom: 2px solid (var(--clr-lightGray));
+		justify-content: center;
+	}
 }
 
 .jog_contentContainer {
 	display: flex;
 	flex-direction: column;
 	width: 55%;
+
+	@media @phone {
+		width: 40%;
+	}
 
 	& span {
 		font-size: 0.9rem;
@@ -41,6 +51,12 @@
 	}
 }
 
+.jog_logoContainer {
+	@media @phone {
+		margin-right: 2rem;
+	}
+}
+
 .lightText {
 	color: var(--clr-gray);
 }
@@ -49,6 +65,13 @@
 	position: fixed;
 	right: 2rem;
 	bottom: 2rem;
+
+	& img {
+		@media @phone {
+			width: 3rem;
+		}
+	}
+
 }
 
 .filtersMenu_container {
@@ -68,8 +91,16 @@
 	width: 14rem;
 	margin-right: 3rem;
 
+	@media @phone {
+		margin-right: 0;
+	}
+
 	& span {
 		margin-right: 1rem;
+
+		@media @phone {
+			font-size: 0.8rem;
+		}
 	}
 
 	& input {
@@ -85,3 +116,4 @@
 .filtersMenu_pickerWrapper {
 	width: 50%;
 }
+

@@ -12,12 +12,26 @@
 	padding: 5rem 3rem 3rem;
 	position: relative;
 
+	@media @phone {
+		width: 85%;
+		padding: 3rem 1rem;
+		border-radius: 2rem;
+	}
+
 	&__purple {
 		background: var(--clr-purple);
+
+		@media @phone {
+			background: none;
+		}
 	}
 
 	&__green {
 		background: var(--clr-appleGreen);
+
+		@media @phone {
+			margin-top: 4rem;
+		}
 	}
 }
 
@@ -26,3 +40,17 @@
 	margin-top: 3rem;
 }
 
+.signIn_logo {
+	&__desctop {
+		@media @phone {
+			display: none;
+		}
+	}
+	&__mobile {
+		display: none;
+		@media @phone {
+			display: flex;
+			margin: 2rem 0 3rem 0;
+		}
+	}
+}

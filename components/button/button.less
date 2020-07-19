@@ -1,3 +1,5 @@
+@import '../index.less';
+
 .button {
 	padding: 1rem 2rem;
 	border-radius: 5rem;
@@ -12,9 +14,14 @@
 	&__white {
 		border: solid 3px var(--clr-white);
 		color: var(--clr-white);
+
+		@media @phone {
+			border: solid 3px var(--clr-purple);
+			color: var(--clr-purple);
+		}
 	}
 
-	&____purple {
+	&__purple {
 		border: solid 3px var(--clr-purple);
 		color: var(--clr-purple);
 	}

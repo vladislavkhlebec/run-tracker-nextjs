@@ -10,7 +10,8 @@ const Home = props => {
 	return (
 		<Layout isSignIn={true}>
 			<div className='action_container action_container__purple'>
-				<img src='/images/icons/bear-face.svg' alt='Sign in logo' />
+				<img className='signIn_logo__desctop' src='/images/icons/bear-face.svg' alt='Sign in logo' />
+				<img className='signIn_logo__mobile' src='/images/icons/bearFace.png' alt='Sign in logo' />
 				<Button
 					className='button__white'
 					onClick={() => {

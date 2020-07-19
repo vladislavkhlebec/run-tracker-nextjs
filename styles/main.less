@@ -11,12 +11,20 @@ h2 {
 article {
 	margin: 0 auto;
 	max-width: 42rem;
+
+	@media @phone {
+		padding: 1rem 1.5rem;
+	}
 }
 
 p {
 	margin: 2rem 0;
 	line-height: 1.71;
 	color: var(--clr-gray);
+
+	@media @phone {
+		margin: 1rem 0;
+	}
 }
 
 .closeButton {
