@@ -149,6 +149,7 @@
 }
 
 .hamburger_toggler {
+	display: none;
 	position: absolute;
 	top: 1rem;
 	right: 1.5rem;
@@ -157,6 +158,10 @@
 	width: 3.25rem;
 	height: 3.25rem;
 	opacity: 0;
+
+	@media @phone {
+		display: flex;
+	}
 }
 
 .hamburger_toggler:checked + .hamburger > div {
@@ -261,4 +266,29 @@
 
 .hamburger_toggler:checked ~ .mobile_navbarHolder {
 	transform: translate(0, 0);
+}
+
+.siteNavbar_filterButton {
+	outline: none;
+	background: none;
+	border: none;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	position: relative;
+
+	& img {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+}
+
+.siteNavbar_filterButtonContainer {
+	width: 3rem;
+	height: 3rem;
+	display: flex;
+	align-items: center;
 }

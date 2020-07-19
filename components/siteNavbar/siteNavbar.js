@@ -1,6 +1,5 @@
 /** Description
  *  @module SiteNavbar
- *  @author rusinozemtsev
  *  @version 0.0.1
  */
 
@@ -8,15 +7,19 @@ import React, { useState } from 'react'
 
 import './siteNavbar.less'
 import { SiteNav, SiteNav_item } from '../siteNav'
+import { connect } from 'react-redux'
 import Link from 'next/link'
+import { setIsActiveFilter } from '../../store/filters/actions'
 
 /** SiteNavbar
  *  @param props
  *  @param props.children
  *  @return {any}
  */
-export function SiteNavbar(props) {
-	const { isSignIn } = props
+
+const SiteNavbar = props => {
+	const { isSignIn, isActive, _setIsActiveFilter } = props
+	console.log(isActive)
 	return (
 		<div className='siteNavbar'>
 			{!isSignIn && (
@@ -74,9 +77,16 @@ export function SiteNavbar(props) {
 										</Link>
 									</SiteNav_item>
 									<SiteNav_item>
-										<Link href='/account'>
-											<a>filters</a>
-										</Link>
+										<div className='siteNavbar_filterButtonContainer'>
+											<button
+												className='siteNavbar_filterButton'
+												onClick={() => {
+													_setIsActiveFilter(!isActive)
+												}}
+											>
+												<img src={`/images/icons/${isActive ? 'filter-active.svg' : 'filter.svg'}`} alt='' />
+											</button>
+										</div>
 									</SiteNav_item>
 								</SiteNav>
 							</div>
@@ -88,3 +98,17 @@ export function SiteNavbar(props) {
 		</div>
 	)
 }
+
+const mapStateToProps = state => {
+	const { isActive } = state.filters
+
+	return {
+		isActive,
+	}
+}
+
+const mapDispatchToProps = {
+	_setIsActiveFilter: setIsActiveFilter,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SiteNavbar)

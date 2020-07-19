@@ -8,7 +8,7 @@ import React from 'react'
 
 import './layout.less'
 import Head from 'next/head'
-import { SiteNavbar } from '../siteNavbar'
+import SiteNavbar from '../siteNavbar/siteNavbar'
 import { fetchJogs } from '../../store/jogs/actions'
 import { setEndDate, setStartDate } from '../../store/filters/actions'
 import withAuth from '../../utils/withAuth'
@@ -53,7 +53,7 @@ export const Layout_section = props => {
  *  @return {any}
  */
 const Layout = props => {
-	const { children, isSignIn, _setEndDate, _setStartDate, endDate, startDate, useFilter } = props
+	const { children, isSignIn, _setEndDate, _setStartDate, endDate, startDate, useFilter, _isActiveFilter } = props
 	return (
 		<>
 			<Head>
@@ -66,7 +66,7 @@ const Layout = props => {
 			<div className='layout'>
 				<LayoutHeader>
 					<SiteNavbar isSignIn={isSignIn} />
-					{useFilter && (
+					{useFilter && _isActiveFilter && (
 						<div className='filtersMenu_container'>
 							<div className='filtersMenu_pickerContainer'>
 								<span>Date from</span>
@@ -93,7 +93,6 @@ const Layout = props => {
 						</div>
 					)}
 				</LayoutHeader>
-
 				<LayoutContent>{children}</LayoutContent>
 			</div>
 		</>
@@ -101,10 +100,11 @@ const Layout = props => {
 }
 
 const mapStateToProps = state => {
-	const { endDate, startDate } = state.filters
+	const { endDate, startDate, isActive } = state.filters
 	return {
 		endDate,
 		startDate,
+		_isActiveFilter: isActive,
 	}
 }
 

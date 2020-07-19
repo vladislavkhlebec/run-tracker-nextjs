@@ -14,7 +14,7 @@ export const setEndDate = date => {
 	}
 }
 
-export const setISActiveFilter = boolean => {
+export const setIsActiveFilter = boolean => {
 	return {
 		type: SET_IS_ACTIVE_FILTERS,
 		payload: boolean,

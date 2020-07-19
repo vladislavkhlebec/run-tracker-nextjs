@@ -21,6 +21,7 @@ export const filtersReducer = (state = initialState, action) => {
 			}
 		}
 		case SET_IS_ACTIVE_FILTERS: {
+			console.log(action)
 			return {
 				...state,
 				isActive: action.payload,
