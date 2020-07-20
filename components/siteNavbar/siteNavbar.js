@@ -20,7 +20,6 @@ import ActiveLink from '../ActiveLink'
 
 const SiteNavbar = props => {
 	const { isSignIn, isActive, _setIsActiveFilter } = props
-	console.log(isActive)
 	return (
 		<div className='siteNavbar'>
 			<div className='menu_logo__mobile'>

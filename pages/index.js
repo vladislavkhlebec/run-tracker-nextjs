@@ -1,3 +1,4 @@
+import React from 'react'
 import Layout, { Layout_section } from '../components/layout/layout'
 import { connect } from 'react-redux'
 
